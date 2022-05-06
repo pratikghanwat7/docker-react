@@ -9,3 +9,14 @@ before_install:
 
 script:
   - docker run -e CI=true pghanwat/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: docker-react
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-090878714654"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  
